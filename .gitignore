@@ -1,0 +1,11 @@
+скаж# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+
+# IDE system files
+.idea
+.vscode
+
+# vendoring cache directory
+.cache
