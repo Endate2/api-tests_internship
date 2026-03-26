@@ -17,7 +17,6 @@ const (
 )
 
 type ApiTest struct {
-	token     string
 	userAgent string
 	host      string
 }
@@ -33,9 +32,7 @@ func GetRunner() *ApiTest {
 	return New()
 }
 
-// Auth Установка Bearer token-а для прохождения авторизации на приватные ручки
-func (at *ApiTest) Auth(token string) *ApiTest {
-	at.token = token
+func (at *ApiTest) Auth() *ApiTest {
 	return at
 }
 
@@ -49,10 +46,6 @@ func (at *ApiTest) Create() *apitest.APITest {
 			request.Header.Set("User-Agent", at.userAgent)
 
 			_ = MergeServiceUrls(at.host, request.URL)
-
-			if len(at.token) != 0 {
-				request.Header.Add("Authorization", "Bearer "+at.token)
-			}
 		})
 }
 
